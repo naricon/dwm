@@ -15,11 +15,11 @@ static const int vertpad            = 0;       /* vertical padding of bar */
 static const int sidepad            = 0;       /* horizontal padding of bar */
 static const char *fonts[]          = { "Terminus:size=10" };
 static const char dmenufont[]       = "Terminus:size=10";
-static const char col_gray1[]       = "#222222";
+static const char col_gray1[]       = "#000000";
 static const char col_gray2[]       = "#3a3d59";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#283d8a";
+static const char col_cyan[]        = "#001330";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -99,10 +99,14 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_s,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[13]} },
-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[11]} },
+	{ MODKEY,                       XK_w,      setlayout,      {.v = &layouts[0]} },
+	{ MODKEY,                       XK_e,      setlayout,      {.v = &layouts[13]} },
+	{ MODKEY,                       XK_r,      setlayout,      {.v = &layouts[1]} },
+	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[5]} },
+	{ MODKEY,                       XK_y,      setlayout,      {.v = &layouts[4]} },
+	{ MODKEY,                       XK_u,      setlayout,      {.v = &layouts[8]} },
+	{ MODKEY,                       XK_i,      setlayout,      {.v = &layouts[7]} },
+	{ MODKEY,                       XK_o,      setlayout,      {.v = &layouts[11]} },
 	{ MODKEY,                       XK_space,  togglefloating, {0} },
 	{ MODKEY|ShiftMask,             XK_f,      togglefullscr,  {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
