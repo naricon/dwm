@@ -16,10 +16,10 @@ static const int sidepad            = 0;       /* horizontal padding of bar */
 static const char *fonts[]          = { "Terminus:size=10" };
 static const char dmenufont[]       = "Terminus:size=10";
 static const char col_gray1[]       = "#000000";
-static const char col_gray2[]       = "#3a3d59";
+static const char col_gray2[]       = "#242847";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#001330";
+static const char col_cyan[]        = "#002969";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
