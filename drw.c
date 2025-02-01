@@ -56,6 +56,7 @@ drw_create(Display *dpy, int screen, Window root, unsigned int w, unsigned int h
 	drw->root = root;
 	drw->w = w;
 	drw->h = h;
+
 	drw->drawable = XCreatePixmap(dpy, root, w, h, DefaultDepth(dpy, screen));
 	drw->gc = XCreateGC(dpy, root, 0, NULL);
 	XSetLineAttributes(dpy, drw->gc, 1, LineSolid, CapButt, JoinMiter);
@@ -167,8 +168,11 @@ drw_fontset_free(Fnt *font)
 }
 
 void
-drw_clr_create(Drw *drw, Clr *dest, const char *clrname)
-{
+drw_clr_create(
+	Drw *drw,
+	Clr *dest,
+	const char *clrname
+) {
 	if (!drw || !dest || !clrname)
 		return;
 
@@ -176,15 +180,17 @@ drw_clr_create(Drw *drw, Clr *dest, const char *clrname)
 	                       DefaultColormap(drw->dpy, drw->screen),
 	                       clrname, dest))
 		die("error, cannot allocate color '%s'", clrname);
-
     dest->pixel |= 0xff << 24;
 }
 
 /* Wrapper to create color schemes. The caller has to call free(3) on the
  * returned color scheme when done using it. */
 Clr *
-drw_scm_create(Drw *drw, const char *clrnames[], size_t clrcount)
-{
+drw_scm_create(
+	Drw *drw,
+	char *clrnames[],
+	size_t clrcount
+) {
 	size_t i;
 	Clr *ret;
 
@@ -224,7 +230,7 @@ drw_rect(Drw *drw, int x, int y, unsigned int w, unsigned int h, int filled, int
 }
 
 int
-drw_text(Drw *drw, int x, int y, unsigned int w, unsigned int h, unsigned int lpad, const char *text, int invert)
+drw_text(Drw *drw, int x, int y, unsigned int w, unsigned int h, unsigned int lpad, const char *text, int invert, Bool markup)
 {
 	int ty, ellipsis_x = 0;
 	unsigned int tmpw, ew, ellipsis_w = 0, ellipsis_len, hash, h0, h1;
@@ -261,9 +267,9 @@ drw_text(Drw *drw, int x, int y, unsigned int w, unsigned int h, unsigned int lp
 
 	usedfont = drw->fonts;
 	if (!ellipsis_width && render)
-		ellipsis_width = drw_fontset_getwidth(drw, "...");
+		ellipsis_width = drw_fontset_getwidth(drw, "...", markup);
 	if (!invalid_width && render)
-		invalid_width = drw_fontset_getwidth(drw, invalid);
+		invalid_width = drw_fontset_getwidth(drw, invalid, markup);
 	while (1) {
 		ew = ellipsis_len = utf8err = utf8charlen = utf8strlen = 0;
 		utf8str = text;
@@ -318,12 +324,12 @@ drw_text(Drw *drw, int x, int y, unsigned int w, unsigned int h, unsigned int lp
 		}
 		if (utf8err && (!render || invalid_width < w)) {
 			if (render)
-				drw_text(drw, x, y, w, h, 0, invalid, invert);
+				drw_text(drw, x, y, w, h, 0, invalid, invert, markup);
 			x += invalid_width;
 			w -= invalid_width;
 		}
 		if (render && overflow)
-			drw_text(drw, ellipsis_x, y, ellipsis_w, h, 0, "...", invert);
+			drw_text(drw, ellipsis_x, y, ellipsis_w, h, 0, "...", invert, markup);
 
 		if (!*text || overflow) {
 			break;
@@ -395,20 +401,11 @@ drw_map(Drw *drw, Window win, int x, int y, unsigned int w, unsigned int h)
 }
 
 unsigned int
-drw_fontset_getwidth(Drw *drw, const char *text)
+drw_fontset_getwidth(Drw *drw, const char *text, Bool markup)
 {
 	if (!drw || !drw->fonts || !text)
 		return 0;
-	return drw_text(drw, 0, 0, 0, 0, 0, text, 0);
-}
-
-unsigned int
-drw_fontset_getwidth_clamp(Drw *drw, const char *text, unsigned int n)
-{
-	unsigned int tmp = 0;
-	if (drw && drw->fonts && text && n)
-		tmp = drw_text(drw, 0, 0, 0, 0, 0, text, n);
-	return MIN(n, tmp);
+	return drw_text(drw, 0, 0, 0, 0, 0, text, 0, markup);
 }
 
 void
