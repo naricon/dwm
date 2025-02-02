@@ -2,6 +2,7 @@
 
 #Add this to your autoexec
 
+xset s 0 &
 picom &
 xinput --set-prop 13 "libinput Accel Speed" -1 &
 sxhkd &
