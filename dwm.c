@@ -2435,11 +2435,8 @@ updatebarpos(Monitor *m)
 	Bar *bar;
 	int y_pad = 0;
 	int x_pad = 0;
-	if (enablegaps)
-	{
-		y_pad = gappoh;
-		x_pad = gappov;
-	}
+	y_pad = vertpad;
+	x_pad = sidepad;
 
 	for (bar = m->bar; bar; bar = bar->next) {
 		bar->bx = m->wx + x_pad;
