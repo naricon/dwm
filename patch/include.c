@@ -15,6 +15,7 @@
 /* Other patches */
 #include "attachx.c"
 #include "cfacts.c"
+#include "cyclelayouts.c"
 #include "decorationhints.c"
 #include "dragcfact.c"
 #include "movestack.c"

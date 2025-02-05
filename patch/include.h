@@ -15,6 +15,7 @@
 /* Other patches */
 #include "attachx.h"
 #include "cfacts.h"
+#include "cyclelayouts.h"
 #include "decorationhints.h"
 #include "dragcfact.h"
 #include "dragmfact.h"
