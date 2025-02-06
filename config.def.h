@@ -8,22 +8,22 @@
 static const unsigned int borderpx       = 0;   /* border pixel of windows */
 static const unsigned int snap           = 15;  /* snap pixel */
 static const int swallowfloating         = 0;   /* 1 means swallow floating windows by default */
-static const unsigned int gappih         = 0;  /* horiz inner gap between windows */
-static const unsigned int gappiv         = 0;  /* vert inner gap between windows */
-static const unsigned int gappoh         = 0;  /* horiz outer gap between windows and screen edge */
-static const unsigned int gappov         = 0;  /* vert outer gap between windows and screen edge */
-static const int smartgaps_fact          = 0;   /* gap factor when there is only one client; 0 = no gaps, 3 = 3x outer gaps */
+static const unsigned int gappih         = 10;  /* horiz inner gap between windows */
+static const unsigned int gappiv         = 10;  /* vert inner gap between windows */
+static const unsigned int gappoh         = 10;  /* horiz outer gap between windows and screen edge */
+static const unsigned int gappov         = 10;  /* vert outer gap between windows and screen edge */
+static const int smartgaps_fact          = 1;   /* gap factor when there is only one client; 0 = no gaps, 3 = 3x outer gaps */
 static const int showbar                 = 1;   /* 0 means no bar */
 static const int topbar                  = 1;   /* 0 means bottom bar */
-static const int vertpad                 = 0;  /* vertical padding of bar */
-static const int sidepad                 = 0;  /* horizontal padding of bar */
+static const int vertpad                 = 7;  /* vertical padding of bar */
+static const int sidepad                 = 10;  /* horizontal padding of bar */
 /* Status is to be shown on: -1 (all monitors), 0 (a specific monitor by index), 'A' (active monitor) */
 static const int statusmon               = 'A';
-static const unsigned int systrayspacing = 0;   /* systray spacing */
-static const int showsystray             = 0;   /* 0 means no systray */
+static const unsigned int systrayspacing = 5;   /* systray spacing */
+static const int showsystray             = 1;   /* 0 means no systray */
 
 /* Indicators: see patch/bar_indicators.h for options */
-static int tagindicatortype              = INDICATOR_NONE;
+static int tagindicatortype              = INDICATOR_BOTTOM_BAR_SLIM;
 static int tiledindicatortype            = INDICATOR_NONE;
 static int floatindicatortype            = INDICATOR_NONE;
 static const char *fonts[]               = { "Terminus:size=10" };
@@ -31,8 +31,8 @@ static const char dmenufont[]            = "monospace:size=10";
 
 static char c000000[]                    = "#000000"; // placeholder value
 
-static char normfgcolor[]                = "#000000";
-static char normbgcolor[]                = "#999999";
+static char normfgcolor[]                = "#bbbbbb";
+static char normbgcolor[]                = "#000000";
 static char normbordercolor[]            = "#000000";
 static char normfloatcolor[]             = "#000000";
 
@@ -46,7 +46,7 @@ static char titlenormbgcolor[]           = "#000000";
 static char titlenormbordercolor[]       = "#444444";
 static char titlenormfloatcolor[]        = "#db8fd9";
 
-static char titleselfgcolor[]            = "#bbbbbb";
+static char titleselfgcolor[]            = "#999999";
 static char titleselbgcolor[]            = "#000000";
 static char titleselbordercolor[]        = "#000000";
 static char titleselfloatcolor[]         = "#000000";
@@ -58,8 +58,8 @@ static char tagsnormfloatcolor[]         = "#000000";
 
 static char tagsselfgcolor[]             = "#000000";
 static char tagsselbgcolor[]             = "#999999";
-static char tagsselbordercolor[]         = "#999999";
-static char tagsselfloatcolor[]          = "#999999";
+static char tagsselbordercolor[]         = "#000000";
+static char tagsselfloatcolor[]          = "#000000";
 
 static char hidnormfgcolor[]             = "#005577";
 static char hidselfgcolor[]              = "#227799";
