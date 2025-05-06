@@ -26,7 +26,7 @@ static const int showsystray             = 1;   /* 0 means no systray */
 static int tagindicatortype              = INDICATOR_BOTTOM_BAR_SLIM;
 static int tiledindicatortype            = INDICATOR_NONE;
 static int floatindicatortype            = INDICATOR_NONE;
-static const char *fonts[]               = { "ANAKRON:size=10" };
+static const char *fonts[]               = { "Unifont:size=10" };
 static const char dmenufont[]            = "monospace:size=10";
 
 static char c000000[]                    = "#000000"; // placeholder value
@@ -46,8 +46,8 @@ static char titlenormbgcolor[]           = "#000000";
 static char titlenormbordercolor[]       = "#444444";
 static char titlenormfloatcolor[]        = "#db8fd9";
 
-static char titleselfgcolor[]            = "#557c9b";
-static char titleselbgcolor[]            = "#000000";
+static char titleselfgcolor[]            = "#000000";
+static char titleselbgcolor[]            = "#557c9b";
 static char titleselbordercolor[]        = "#000000";
 static char titleselfloatcolor[]         = "#000000";
 
