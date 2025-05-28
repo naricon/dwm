@@ -1,0 +1,17 @@
+#!/bin/sh
+
+#Add this to your autoexec
+xrdb -merge ~/.Xresources
+wal -R
+xinput --set-prop 13 "libinput Accel Speed" -1 
+setxkbmap -layout "us,es" -option "grp:alt_shift_toggle"
+
+picom &
+lxpolkit &
+keepassxc &
+sxhkd &
+nitrogen --restore &
+dunst &
+nm-applet &
+dwmblocks &
+exec dwm 

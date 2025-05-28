@@ -180,6 +180,7 @@ drw_clr_create(
 	                       DefaultColormap(drw->dpy, drw->screen),
 	                       clrname, dest))
 		die("error, cannot allocate color '%s'", clrname);
+
 	dest->pixel |= 0xff << 24;
 }
 

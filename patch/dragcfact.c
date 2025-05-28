@@ -21,8 +21,6 @@ dragcfact(const Arg *arg)
 		None, cursor[CurIronCross]->cursor, CurrentTime) != GrabSuccess)
 		return;
 
-	ignore_warp = 1;
-
 	XWarpPointer(dpy, None, c->win, 0, 0, 0, 0, c->w/2, c->h/2);
 
 	prev_x = prev_y = -999999;
@@ -61,8 +59,6 @@ dragcfact(const Arg *arg)
 			break;
 		}
 	} while (ev.type != ButtonRelease);
-
-	ignore_warp = 0;
 
 	XWarpPointer(dpy, None, c->win, 0, 0, 0, 0, c->w/2, c->h/2);
 
