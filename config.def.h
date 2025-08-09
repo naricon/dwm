@@ -5,13 +5,13 @@
 #define CMD(...)   { .v = (const char*[]){ __VA_ARGS__, NULL } }
 
 /* appearance */
-static const unsigned int borderpx       = 1;  /* border pixel of windows */
+static const unsigned int borderpx       = 2;  /* border pixel of windows */
 static const unsigned int snap           = 5;  /* snap pixel */
 static const int swallowfloating         = 0;  /* 1 means swallow floating windows by default */
-static const unsigned int gappih         = 5;  /* horiz inner gap between windows */
-static const unsigned int gappiv         = 5;  /* vert inner gap between windows */
-static const unsigned int gappoh         = 5;  /* horiz outer gap between windows and screen edge */
-static const unsigned int gappov         = 5;  /* vert outer gap between windows and screen edge */
+static const unsigned int gappih         = 0;  /* horiz inner gap between windows */
+static const unsigned int gappiv         = 0;  /* vert inner gap between windows */
+static const unsigned int gappoh         = 0;  /* horiz outer gap between windows and screen edge */
+static const unsigned int gappov         = 0;  /* vert outer gap between windows and screen edge */
 static const int smartgaps_fact          = 1;  /* gap factor when there is only one client; 0 = no gaps, 3 = 3x outer gaps */
 static const int showbar                 = 1;  /* 0 means no bar */
 static const int topbar                  = 1;  /* 0 means bottom bar */
@@ -31,8 +31,6 @@ static int tiledindicatortype            = INDICATOR_NONE;
 static int floatindicatortype            = INDICATOR_TOP_LEFT_SQUARE;
 static const char *fonts[]               = { /*"FiraCode Nerd Font:pixelsize=20",*/"Ttyp0:size=12","Unifont:size=12" };
 static const char dmenufont[]            = "monospace:size=10";
-
-//#include "/home/lub/.cache/wal/colors-wal-dwm.h"
 
 static char c000000[]                    = "#000000"; // placeholder value
 
@@ -154,7 +152,7 @@ static const Rule rules[] = {
 	RULE(.wintype = WTYPE "SPLASH", .isfloating = 1)
 	RULE(.class = "vesktop", .tags = 1 << 2)
 	RULE(.class = "steam", .tags = 1 << 1)
-	RULE(.class = "firefox", .bw = 0, .tags = 1 << 0)
+	RULE(.class = "firefox", .tags = 1 << 0)
 	RULE(.class = "St", .isterminal = 1 , .noswallow = 0)
 };
 
@@ -229,7 +227,7 @@ static const Key keys[] = {
 	/* modifier                     key            function                argument */
 //	{ MODKEY,                       XK_p,          spawn,                  {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return,     spawn,                  {.v = termcmd } },
-	{ MODKEY,                       XK_b,          togglebar,              {0} },
+//	{ MODKEY,                       XK_b,          togglebar,              {0} },
 	{ MODKEY,                       XK_j,          focusstack,             {.i = +1 } },
 	{ MODKEY,                       XK_k,          focusstack,             {.i = -1 } },
 	{ MODKEY,                       XK_equal,      incnmaster,             {.i = +1 } },
